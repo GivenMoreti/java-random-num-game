@@ -4,10 +4,12 @@ import java.util.*;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        Player.play();
-        int score = Player.score;
-        System.out.println(score);
+        Player kim = new Player("Kim");
+        kim.play();
 
+
+        System.out.println("Your score is " +kim.getScore());
+        System.out.println("Number of trials :" + kim.getNumberOfPlayers());
 
     }
 }

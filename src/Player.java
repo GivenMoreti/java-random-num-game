@@ -5,13 +5,14 @@ import java.util.Scanner;
 public class Player {
 
     String username;
-    static int score = 10;
+    int score = 10;
+    static int numberOfTrials;
 
     Player(String username){
 
         this.username = username;
     }
-    public static void play(){
+    public void play(){
 
        try {
            Random num = new Random();
@@ -20,7 +21,6 @@ public class Player {
            int myNum = num.nextInt(max - min + 1) + min;
 
            Scanner guess = new Scanner(System.in);
-
            int guessedNum;
 
            do {
@@ -30,6 +30,7 @@ public class Player {
                if (guessedNum < myNum) {
                    System.out.println("Too low");
                    score--;
+                   numberOfTrials++;
 
                } else if (guessedNum > myNum) {
                    System.out.println("too high");
@@ -38,6 +39,7 @@ public class Player {
                    System.out.println("you won!");
                    System.out.println("Congratulations!");
                    score++;
+                   numberOfTrials++;
                }
                if (score == 0) {
                    System.out.println("You lose");
@@ -46,10 +48,19 @@ public class Player {
 
            } while (guessedNum != myNum);
 
-           System.out.println("You lose, try again");
+
        }catch(Exception e){
            System.out.println(Arrays.toString(e.getStackTrace()));
        }
 
+
+    }
+
+    String getScore(){
+        return this.score + " "+ this.username;
+    }
+
+    int getNumberOfPlayers(){
+        return numberOfTrials;
     }
 }
